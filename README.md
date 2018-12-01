@@ -1,2 +1,8 @@
 # codepath_Globitek
 Finding vulnerabilities in websites.
+
+I spent time going through each website's directory, noticing how each site behaved against different attacks. The three sites are similar in appearance, labeled by the colors: red, blue and green.
+I was able to find vulnerabilities in each of the sites using my knowledge of the OWASP top ten attacks.
+For Globitek Blue, I was able to perform session hijacking. I logged in to two sessions; the first using a Firefox browser and the second using Chrome. I used 'Inspect element' to see the session cookies. I noticed when I modified the cookie to a non-valid string, and refreshed the page, the site logged me out. When I copied my valid session cookie from my Chrome session, and pasted to the value of the session cookie in my Firefox session, I was able to stay logged in. This let me know that as long as I have a valid session cookie value, I can log in as that user.
+For Globitek Red, I noticed an IDOR vulnerability. When selecting information about a salesperson, the url displays a unique id number. I was able to change ?id=1 to ?id=10, noticing a directory that should not have been accessible, publicly. I noticed entering ?id=11 lead me to page that it shouldn't have as well.
+The Globitek Green website had Cross-Site Scripting (XSS) vulnerabilities. From the public page, I was able to craft a comment in the 'Feedback' section, using JavaScript. I entered: <script>alert('Shaya_wuz_here')</script> and submitted the entry. I logged in and went to the feedback page. The page loaded, executing the JavaScript I entered, showing my custom alert message.
